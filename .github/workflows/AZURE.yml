@@ -7,10 +7,10 @@ on:
       - main
 
 env:
-  AZURE_WEBAPP_NAME: time-service
+  AZURE_WEBAPP_NAME: time-service 
   AZURE_WEBAPP_PACKAGE_PATH: "Time.api/publish"
   DOTNET_VERSION: "9.x"
-  SOLUTION_PATH: "Time.api/Time.api.sln"
+  SOLUTION_PATH: "Time.Api.sln"
   PROJECT_PATH: "Time.api/Time.api.csproj"
   PUBLISH_DIR: "publish"
 
