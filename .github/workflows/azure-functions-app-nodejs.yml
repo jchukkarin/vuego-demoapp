@@ -32,6 +32,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+
       # 5. Deploy ไป Azure Functions
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
