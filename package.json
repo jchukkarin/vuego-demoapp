@@ -9,10 +9,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-  "build": "vite build",
-  "serve": "vite preview"
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
 }
