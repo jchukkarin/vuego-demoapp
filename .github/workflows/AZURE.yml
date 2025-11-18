@@ -10,7 +10,7 @@ env:
   AZURE_WEBAPP_NAME: time-service
   AZURE_WEBAPP_PACKAGE_PATH: "Time.api/publish"
   DOTNET_VERSION: "9.x"
-  SOLUTION_PATH: "Time.api.sln"
+  SOLUTION_PATH: "Time.api/Time.api.sln"
   PROJECT_PATH: "Time.api/Time.api.csproj"
   PUBLISH_DIR: "publish"
 
@@ -23,6 +23,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: List repository files
+        run: ls -R .
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
