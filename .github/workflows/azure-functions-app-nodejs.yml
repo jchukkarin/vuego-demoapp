@@ -6,8 +6,7 @@ on:
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'vuego-demoapp'
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
-  NODE_VERSION: '22.11.0'
+  NODE_VERSION: '20.x'
 
 jobs:
   build-and-deploy:
@@ -15,24 +14,29 @@ jobs:
     environment: dev
 
     steps:
+      # 1. ดึงโค้ดจาก GitHub
       - uses: actions/checkout@v3
 
+      # 2. ตั้ง Node.js version
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ env.NODE_VERSION }}
 
+      # 3. ติดตั้ง dependencies (ไปที่ folder client)
       - name: Install dependencies
         run: npm install
+        working-directory: client
 
+      # 4. Build โปรเจกต์
       - name: Build
         run: npm run build
         working-directory: client
 
+      # 5. Deploy ไป Azure Functions
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          package: client/dist
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-
