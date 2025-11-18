@@ -30,7 +30,6 @@ jobs:
       # 4. Build โปรเจกต์
       - name: Build
         run: npm run build
-        working-directory: client
 
       # 5. Deploy ไป Azure Functions
       - name: Deploy to Azure Functions
