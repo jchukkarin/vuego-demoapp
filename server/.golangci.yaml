@@ -1,9 +1,0 @@
-linters-settings:
-  revive:
-linters:
-  enable:
-    - revive
-    - gofmt
-#issues:
-#include:
-#  - EXC0002
