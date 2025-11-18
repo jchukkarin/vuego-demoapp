@@ -5,9 +5,9 @@ on:
     branches: ["main"]
 
 env:
-  AZURE_FUNCTIONAPP_NAME: 'your-app-name'
+  AZURE_FUNCTIONAPP_NAME: 'vuego-demoapp'
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'
-  NODE_VERSION: '20.x'
+  NODE_VERSION: '22.11.0'
 
 jobs:
   build-and-deploy:
@@ -24,11 +24,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./client
 
       - name: Build
         run: npm run build
-        working-directory: ./client
 
       - name: Deploy to Azure Functions
         uses: Azure/functions-action@v1
