@@ -1,4 +1,4 @@
-name: AURE_CI/CD
+name: AURE_Deploy-CI-CD
 
 on:
   push:
