@@ -1,4 +1,4 @@
-name: Build and Node
+name: Deploy-Upload-FTP
 
 on:
   push:
