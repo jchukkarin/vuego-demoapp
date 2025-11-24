@@ -1,4 +1,4 @@
-name: AURE_Deploy-CI-CD
+name: Build and Node
 
 on:
   push:
