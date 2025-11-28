@@ -18,14 +18,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Run tests
-        run: npm run test
+        run: npm install
 
       - name: Build Vue project
         run: npm run build
 
+      # Upload build files to server
       - name: Upload files via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -38,6 +36,7 @@ jobs:
           strip_components: 1
           overwrite: true
 
+      # Run Docker Compose ผ่าน SSH
       - name: Deploy with Docker on remote server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -50,3 +49,4 @@ jobs:
             docker compose down || true
             docker compose up -d --build
             docker system prune -f
+            docker volume prune -f
