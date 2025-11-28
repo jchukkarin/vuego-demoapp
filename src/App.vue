@@ -7,7 +7,7 @@
 
 <script>
 import Dashboard from "./components/dashboard.vue";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/LoginForm.vue";
 
 export default {
   name: "App",
