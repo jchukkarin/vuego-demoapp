@@ -12,7 +12,7 @@
 import { defineProps } from 'vue';
 
 // กำหนด Props ที่คอมโพเนนต์นี้จะรับเข้ามา
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true

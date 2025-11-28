@@ -26,16 +26,7 @@
 
 <script>
 import axios from "axios";
-import { mount } from '@vue/test-utils';
-import LoginForm from '@/components/LoginForm.vue';
 
-describe('LoginForm.vue', () => {
-  it('renders login form', () => {
-    const wrapper = mount(LoginForm);
-    expect(wrapper.find('input#username').exists()).toBe(true);
-    expect(wrapper.find('input#Password').exists()).toBe(true);
-  });
-});
 
 export default {
   name: "LoginForm",

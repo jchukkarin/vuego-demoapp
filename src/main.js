@@ -3,12 +3,12 @@
 import Vue from "vue";
 import App from "./App";
 import LoginForm from "./components/LoginForm.vue";
-import Dashboard from "./components/Dashboard.vue";
-import WidgetCard from "./components/WidgetCard.vue";
+//import Dashboard from "./components/dashboard.vue";
+//import WidgetCard from "./components/WidgetCard.vue";
 
 Vue.component("login-form", LoginForm);
-Vue.component("dashboard", Dashboard);  
-Vue.component("widget-card", WidgetCard);
+//Vue.component("dashboard", Dashboard);
+// Vue.component("widget-card", WidgetCard); 
 
 
 Vue.config.productionTip = false;
