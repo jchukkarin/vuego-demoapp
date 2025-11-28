@@ -15,10 +15,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+
+      - name: Run tests
+        run: npm run test
 
       - name: Build Vue project
         run: npm run build
@@ -32,8 +35,8 @@ jobs:
           port: 22
           source: "dist/*"
           target: "/var/www/vue-app/"
-          overwrite: true
           strip_components: 1
+          overwrite: true
 
       - name: Deploy with Docker on remote server
         uses: appleboy/ssh-action@v1.0.3
