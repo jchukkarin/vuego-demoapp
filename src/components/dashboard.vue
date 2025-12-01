@@ -14,7 +14,8 @@
     <main class="main-content">
       <header class="header">
         <h1>ภาพรวมระบบ</h1>
-        <div class="user-info">สวัสดี, ผู้ดูแลระบบ</div>
+        <div class="user-info">สวัสดี, {{ user ? user.username : 'ผู้ดูแลระบบ' }}</div>
+        <button @click="$emit('logout')" class="logout-btn">Logout</button>
       </header>
       
       <div class="widget-grid">
@@ -31,23 +32,31 @@
   </div>
 </template>
 
-<script setup>
-import WidgetCard from './WidgetCard.vue'; // สมมติว่าสร้างคอมโพเนนต์ย่อยไว้แล้ว
-// สามารถใช้ Vue Router สำหรับการจัดการการเปลี่ยนหน้าได้
+<script>
+import WidgetCard from './WidgetCard.vue';
+
+export default {
+  name: "Dashboard",
+  components: {
+    WidgetCard
+  },
+  props: {
+    user: Object
+  }
+};
 </script>
 
 <style scoped>
 .dashboard-container {
   display: flex;
-  min-height: 100vh; /* ทำให้เต็มความสูงของหน้าจอ */
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f4f7f9;
 }
 
-/* 1. Sidebar */
 .sidebar {
   width: 250px;
-  background-color: #2c3e50; /* สีเข้ม */
+  background-color: #2c3e50;
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -78,13 +87,11 @@ import WidgetCard from './WidgetCard.vue'; // สมมติว่าสร้�
   background-color: #34495e;
 }
 
-/* 2. Main Content */
 .main-content {
   flex-grow: 1;
   padding: 20px 40px;
 }
 
-/* 2.1 Header */
 .header {
   display: flex;
   justify-content: space-between;
@@ -99,15 +106,23 @@ import WidgetCard from './WidgetCard.vue'; // สมมติว่าสร้�
   color: #333;
 }
 
-/* 2.2 Widget Grid */
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .widget-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ปรับขนาดอัตโนมัติ */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
 .full-width-card {
-    grid-column: 1 / -1; /* กินพื้นที่เต็มความกว้าง */
+    grid-column: 1 / -1;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
