@@ -4,11 +4,11 @@
 
     <form @submit.prevent="login">
       <div class="form-group">
-        <label>Username</label>
+        <label>Email</label>
         <input 
-          type="text" 
-          v-model="username" 
-          placeholder="Enter username"
+          type="email" 
+          v-model="email" 
+          placeholder="Enter email"
           required
         />
       </div>
@@ -24,6 +24,11 @@
       </div>
 
       <button type="submit" class="btn">Login</button>
+
+      <p class="link">
+        ยังไม่มีบัญชี? 
+        <span @click="register" class="register-link">Register</span>
+      </p>
     </form>
   </div>
 </template>
@@ -36,105 +41,88 @@ export default {
 
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
     };
   },
 
   methods: {
     async login() {
-      if (!this.username || !this.password) {
-        alert("กรุณากรอก Username และ Password");
+      if (!this.email || !this.password) {
+        alert("กรุณากรอก Email และ Password");
         return;
       }
 
       try {
         const response = await axios.post(
-          "http://api2.wisksolution.com/login",
+          "http://localhost:3000/login",       // ⭐ เชื่อม backend
           {
-            username: this.username,
+            email: this.email,
             password: this.password,
           }
         );
 
-        // แสดงข้อความตอบกลับจาก API
         alert(response.data.message || "Login success");
 
-        // ส่งข้อมูลกลับไปยัง parent component
+        // ส่งข้อมูล user ไปหน้า dashboard
         this.$emit("login-success", response.data.user);
 
-      } catch (error) {
+      } catch (err) {
         alert(
           "Error: " +
-            ((error.response && error.response.data && error.response.data.message) || error.message || "Login failed")
+          ((err.response && err.response.data && err.response.data.message) ||
+            err.message ||
+            "Login failed")
         );
       }
     },
+
+    register() {
+      this.$emit("switch-view", "register");
+    }
   },
 };
 </script>
 
 <style scoped>
-/* รีเซ็ตเบื้องต้น */
-* {
-  box-sizing: border-box;
-}
-
-/* คอนเทนเนอร์ */
 .login-container {
   width: 350px;
-  margin: 50px auto;
+  margin: 60px auto;
   padding: 25px;
   border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  background: #fff;
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.15);
 }
 
-/* หัวข้อ */
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-/* ฟอร์ม */
 .form-group {
-  margin-bottom: 18px;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
+  margin-bottom: 16px;
 }
 
 input {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  outline: none;
-  transition: 0.2s;
 }
 
-input:focus {
-  border-color: #007bff;
-}
-
-/* ปุ่ม */
 .btn {
   width: 100%;
   padding: 12px;
   background: #007bff;
-  color: white;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  color: white;
   font-size: 16px;
-  transition: 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.btn:hover {
-  background: #0056b3;
+.link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.register-link {
+  color: #007bff;
+  cursor: pointer;
 }
 </style>

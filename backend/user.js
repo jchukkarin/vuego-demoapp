@@ -8,12 +8,8 @@ app.use(express.json());
 
 // อ่านฐานข้อมูล users.json
 function readUsers() {
-    try {
-        const file = fs.readFileSync("users.json");
-        return JSON.parse(file);
-    } catch (err) {
-        return [];
-    }
+    const file = fs.readFileSync("users.json");
+    return JSON.parse(file);
 }
 
 // เขียนลง users.json

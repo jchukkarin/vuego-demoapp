@@ -20,6 +20,10 @@
           <label for="password">Password</label>
         </div>
         <div class="form-group">
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" v-model="confirmPassword" required>
+          <label for="confirmPassword">Confirm Password</label>
+        </div>
+        <div class="form-group">
           <input type="text" id="address" placeholder="Address" v-model="address" required>
           <label for="address">Address</label>
         </div>
@@ -46,7 +50,7 @@ export default {
   name: "RegisterForm",
   data() {
     return {
-      username: "",
+      name: "",
       phone: "",
       email: "",
       password: "",
@@ -63,7 +67,7 @@ export default {
 
       try {
         const response = await axios.post("http://localhost:3000/register", {
-          username: this.username,
+          name: this.name,
           phone: this.phone,
           email: this.email,
           password: this.password,
