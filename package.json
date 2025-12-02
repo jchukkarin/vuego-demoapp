@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "vue-template",
   "version": "1.0.0",
   "description": null,
@@ -84,4 +85,26 @@
   "keywords": [
     "vue"
   ]
+=======
+  "name": "index",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.11",
+    "vite-plugin-vue-devtools": "^8.0.3"
+  }
+>>>>>>> bcff32a4285968ad5580c2476416d5f9d4e96d5e
 }
