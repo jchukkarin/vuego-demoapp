@@ -1,1 +1,21 @@
-
+name: SSH TO Test
+on:
+ push:
+   branches:
+     - main
+jobs:
+ deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout Code
+       uses: actions/checkout@v3
+     - name: Execute Remote Commands via SSH
+       uses: appleboy/ssh-action@v1
+       with:
+         host: ${{ secrets.HOST }}
+         username: ${{ secrets.USERNAME }}
+         key: ${{ secrets.KEY }}
+         port: ${{ secrets.PORT }}
+         script: |
+           whoami
+           ls -al
