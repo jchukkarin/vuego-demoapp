@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div id="app">
     <!-- แสดงหน้า Login -->
@@ -72,12 +71,3 @@ body {
   background: #f5f5f5;
 }
 </style>
-=======
-<script setup></script>
-
-<template>
-  <div class=text-black><h1>welocome hello world</h1></div>
-</template>
-
-<style scoped></style>
->>>>>>> bcff32a4285968ad5580c2476416d5f9d4e96d5e
