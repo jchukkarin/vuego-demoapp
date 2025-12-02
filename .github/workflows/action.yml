@@ -1,8 +1,11 @@
-name: SCP Copy
-description: Copy files to remote server via SSH
+# action.yml
+name: 'SCP Copy'
+description: 'copy files to remote server via SSH'
+
 runs:
-  using: "node16"
-  main: "index.js"
+  using: 'node20' # หรือ node20
+  main: 'index.js'
+
 inputs:
   host:
     description: 'Server host'
@@ -19,9 +22,10 @@ inputs:
   port:
     description: 'SSH port'
     required: false
+    default: '22' # เพิ่มค่า default ให้เป็น 22 (ถ้าต้องการ)
   source:
     description: 'Source files'
     required: true
   target:
-    description: 'Target path on server'
+    description: 'Destination target directory on remote server'
     required: true
