@@ -25,7 +25,7 @@
 <script>
 import LoginForm from "./components/LoginForm.vue";
 import RegisterForm from "./components/RegisterForm.vue";
-import Dashboard from "./components/Dashboard.vue";
+import Dashboard from "./components/dashboard.vue";
 
 export default {
   name: "App",
